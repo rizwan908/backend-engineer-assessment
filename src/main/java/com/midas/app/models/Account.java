@@ -1,5 +1,6 @@
 package com.midas.app.models;
 
+import com.midas.app.enums.*;
 import jakarta.persistence.*;
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -28,6 +29,13 @@ public class Account {
 
   @Column(name = "email")
   private String email;
+
+  @Enumerated(EnumType.STRING)
+  @Column(name = "provider_type")
+  private ProviderType providerType;
+
+  @Column(name = "provider_id")
+  private String providerId;
 
   @Column(name = "created_at")
   @CreationTimestamp

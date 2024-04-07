@@ -18,6 +18,33 @@ components:
           description: "Email of user"
           example: "john@doe.com"
           required: true
+        providerId:
+          type: string
+          description: "payment provider id"
+          example: "cus_NffrFeUfNV2Hib"
+          required: true
+        providerType:
+          type: string
+          description: "Payment provider type"
+          example: "stripe"
+          enum:
+            - stripe
+          required: true
+    updateAccount:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: "User's first name"
+          example: "John"
+        lastName:
+          type: string
+          description: "User's last name"
+          example: "Doe"
+        email:
+          type: string
+          description: "Email of user"
+          example: "john@doe.com"
     account:
       type: object
       properties:
@@ -39,6 +66,14 @@ components:
           type: string
           description: "Email of user"
           example: "john@doe.com"
+        providerId:
+          type: string
+          description: "payment provider id"
+          example: "cus_NffrFeUfNV2Hib"
+        providerType:
+          type: string
+          description: "Payment provider type"
+          example: "stripe"
         createdAt:
           type: string
           format: date-time
@@ -55,6 +90,8 @@ components:
         - id: usr_fba5b240-0e68-4e64-aca6-f12022dc4be3
           firstName: "John"
           lastName: "Doe"
+          providerId: "cus_NffrFeUfNV2Hib"
+          providerType: "STRIPE"
           creationAt: "2022-04-13T01:52:40.690387Z"
           updatedAt: "2022-04-13T01:52:40.690387Z"
 

@@ -1,7 +1,8 @@
 package com.midas.app.services;
 
 import com.midas.app.models.Account;
-import java.util.List;
+import com.midas.generated.model.*;
+import java.util.*;
 
 public interface AccountService {
   /**
@@ -13,9 +14,20 @@ public interface AccountService {
   Account createAccount(Account details);
 
   /**
+   * updateAccount updates account.
+   *
+   * @param accountId
+   * @param updateAccountDto
+   * @return Account //
+   */
+  Account updateAccount(UUID accountId, UpdateAccountDto updateAccountDto);
+
+  /**
    * getAccounts returns a list of accounts.
    *
    * @return List<Account>
    */
   List<Account> getAccounts();
+
+  Account getAccount(UUID accountId);
 }

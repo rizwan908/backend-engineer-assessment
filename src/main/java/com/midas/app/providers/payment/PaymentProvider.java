@@ -13,4 +13,11 @@ public interface PaymentProvider {
    * @return Account
    */
   Account createAccount(CreateAccount details);
+
+  /**
+   * A method to update an account.
+   *
+   * @param details the details of the account to be updated
+   */
+  void updateAccount(CreateAccount details);
 }

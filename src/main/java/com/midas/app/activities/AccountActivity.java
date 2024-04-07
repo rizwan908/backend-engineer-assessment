@@ -1,6 +1,7 @@
 package com.midas.app.activities;
 
 import com.midas.app.models.Account;
+import com.stripe.exception.*;
 import io.temporal.activity.ActivityInterface;
 import io.temporal.activity.ActivityMethod;
 
