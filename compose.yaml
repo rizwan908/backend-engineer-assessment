@@ -1,9 +1,60 @@
+version: '3'
 services:
-  postgres:
+  dbservice:
+    container_name: dbservice
     image: 'postgres:latest'
     environment:
       - 'POSTGRES_DB=mydatabase'
       - 'POSTGRES_PASSWORD=secret'
       - 'POSTGRES_USER=myuser'
+#    expose:
+#      - 5432
     ports:
-      - '5432'
+      - "5432:5432"
+    networks:
+      - my-bridge-network
+#
+#  temporal3:
+#    container_name: temporal3
+#    image: 'temporal'
+##    environment:
+##      - 'POSTGRES_DB=mydatabase'
+##      - 'POSTGRES_PASSWORD=secret'
+##      - 'POSTGRES_USER=myuser'
+###    expose:
+##      - 5432
+##    entrypoint: [ "bash", "-c", "curl -sSf https://temporal.download/cli.sh | sh && sleep 100 && temporal server start-dev &" ]
+#    command: sh - c "curl -sSf https://temporal.download/cli.sh | sh && sleep 100 && temporal server start-dev &"
+#
+#    ports:
+#      - "7233:7233"
+#    networks:
+#      - my-bridge-network
+
+#  my-java-app:
+#    build:
+#      context: .
+##      dockerfile: Dockerfile
+#    container_name: appservice
+#    ports:
+#      - "8080:8080"
+#    environment:
+#      SPRING_TEMPORAL_CONNECTION_TARGET: temporal3:7233 # Use host machine's IP
+#      SPRING_TEMPORAL_NAMESPACE: default
+#      SPRING_TEMPORAL_WORKERS_AUTO_DISCOVERY_PACKAGES: com.midas.app
+#      SPRING_DATASOURCE_URL: jdbc:postgresql://dbservice:5432/mydatabase  # Change the port to 49153
+#      SPRING_DATASOURCE_USERNAME: myuser
+#      SPRING_DATASOURCE_PASSWORD: secret
+##      SPRING_TEMPORAL_CONNECTION_TARGET: "172.23.0.2:7233"
+##      SPRING_TEMPORAL_NAMESPACE: default
+##      SPRING_TEMPORAL_WORKERS_AUTO_DISCOVERY_PACKAGES: com.midas.app
+#    expose:
+#      - "8080"
+#    networks:
+#      - my-bridge-network
+#    depends_on:
+#      - dbservice
+#      - temporal2
+networks:
+  my-bridge-network:
+    driver: bridge
